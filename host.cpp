@@ -34,7 +34,8 @@
         for(Service *s: services_) {
             if(s->port() == packet->destPort()) {
                 service = s;
-                std::cout << "Host #" << id() << ": received packet, destination port: " << service->port() << std::endl;
+                //std::cout << "Host #" << id() << ": received packet, destination port: " << service->port() << std::endl;
+                log("received packet");
                 break;
             }
         }
@@ -44,13 +45,15 @@
         }
 
         else {
-            std::cout << "Host #" << id() << ": no service for packet (from: "<< packet->srcAddress().toString() << ", to: " << packet->destAddress().toString() << ", " << packet->dataSize() << " bytes)" << std::endl;
+            //std::cout << "Host #" << id() << ": no service for packet (from: "<< packet->srcAddress().toString() << ", to: " << packet->destAddress().toString() << ", " << packet->dataSize() << " bytes)" << std::endl;
+            log("no service for packet");
         }
     }
 
     // 링크를 랜덤으로 하나 선택하여 패킷을 전송한다.
     void Host::send(Packet *packet) {
-        std::cout << "Host #" << id() << ": sending packet (from: " << packet->srcAddress().toString() << ", to: " << packet->destAddress().toString() << ", " << packet->dataSize() << " bytes)" << std::endl;
+        //std::cout << "Host #" << id() << ": sending packet (from: " << packet->srcAddress().toString() << ", to: " << packet->destAddress().toString() << ", " << packet->dataSize() << " bytes)" << std::endl;
+        log("sending packet");
         getRandomLink()->sendPacket(this, packet);
     }
 

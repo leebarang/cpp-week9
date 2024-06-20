@@ -3,10 +3,11 @@
 
 #include "node.h"
 #include "host.h"
+#include "object.h"
 
 class Host;
 
-class Service {
+class Service : public Object {
   friend class ServiceInstaller;
 
 protected:
@@ -19,6 +20,7 @@ protected:
   Service(Host *host, int port) : host_(host), port_(port) {}
 
 public:
+  virtual ~Service() {};
   virtual void receivePacket(Packet* packet) = 0;
   short port() {return port_;}
 };

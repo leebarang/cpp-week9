@@ -19,6 +19,12 @@ private:
       : Service(host, port), destAddress_(destAddress), destPort_(destPort) {}
 
 public:
+
+  virtual ~MessageService() override = default;
+
+  // 해당 오브젝트의 이름을 반환한다.
+  virtual std::string name() override { return "MessageService";}
+
   // 메시지 패킷를 전송한다
   void send(std::string message);
 

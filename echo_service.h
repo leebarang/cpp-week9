@@ -14,6 +14,9 @@ private:
   EchoService(Host *host, short port) : Service(host, port) {}
 
 public:
+  virtual ~EchoService() override = default;
+  // 해당 오브젝트의 이름을 반환한다.
+  virtual std::string name() override { return "EchoService";}
   virtual void receivePacket(Packet* packet) override;
 };
 

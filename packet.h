@@ -2,10 +2,11 @@
 #define PACKET_H
 
 #include "address.h"
+#include "object.h"
 #include <string>
 #include <vector>
 
-class Packet {
+class Packet : Object {
 public:
   Packet(Address srcAddress, Address destAddress, short srcPort, short destPort,
          std::string data)
@@ -20,6 +21,9 @@ public:
          std::vector<char> data)
       : srcAddress_(srcAddress), destAddress_(destAddress), srcPort_(srcPort),
         destPort_(destPort), data_(data) {}
+
+  // 해당 오브젝트의 이름을 반환한다.
+  virtual std::string name() override { return "Packet";}
 
   // 전송자 주소
   Address srcAddress() { return srcAddress_; }

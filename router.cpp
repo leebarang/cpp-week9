@@ -6,12 +6,14 @@ void Router::onReceive(Packet* packet) {
   for(RoutingEntry r : routingTable_) {
     if(r.destination == packet->destAddress()) {
       existDestination = true;
-      std::cout << "Router #" << id() << ": forwarding packet (from: " << packet->srcAddress().toString() << ", to: " << packet->destAddress().toString() << ", " << packet->dataSize() << " bytes)" << std::endl;
+      //std::cout << "Router #" << id() << ": forwarding packet (from: " << packet->srcAddress().toString() << ", to: " << packet->destAddress().toString() << ", " << packet->dataSize() << " bytes)" << std::endl;
+      log("forwarding packet");
       r.nextLink->sendPacket(this, packet);
       break;
     }
   }
   if (existDestination == false) {
-    std::cout << "Router #" << id() << ":no route for packet (from: " << packet->srcAddress().toString() << ", to: " << packet->destAddress().toString() << ", " << packet->dataSize() << " bytes)" << std::endl;
+    //std::cout << "Router #" << id() << ":no route for packet (from: " << packet->srcAddress().toString() << ", to: " << packet->destAddress().toString() << ", " << packet->dataSize() << " bytes)" << std::endl;
+    log("no route for packet");
   }
 }
