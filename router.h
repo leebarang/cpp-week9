@@ -16,10 +16,13 @@ protected:
   std::vector<RoutingEntry> routingTable_;
 
   // 패킷을 받아 재전송한다.
-  void onReceive(Packet* packet) override;
+  virtual void onReceive(Packet* packet) override;
   
 public:
-  ~Router() override {}
+  // 해당 오브젝트의 이름을 반환한다.
+  virtual std::string name() override { return "Router";}
+
+  virtual ~Router() override {}
 };
 
 #endif

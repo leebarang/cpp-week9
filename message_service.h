@@ -23,7 +23,7 @@ public:
   void send(std::string message);
 
   // 패킷을 받고, 서비스를 실행한다.
-  void receivePacket(Packet* packet) override;
+  virtual void receivePacket(Packet* packet) override;
 
 };
 

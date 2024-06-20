@@ -23,7 +23,10 @@ private:
 public:
   Address address() { return address_; }
   Host(Address address) : address_(address) {}
-  ~Host() override {}
+  virtual ~Host() override {}
+
+  // 해당 오브젝트의 이름을 반환한다.
+  virtual std::string name() override { return "Host";}
 
   // 호스트와 설치된 서비스를 전부 초기화한다.
   void initialize();
@@ -35,7 +38,7 @@ public:
   short assignSrcPort();
 
   // 패킷을 전달 받는다.
-  void onReceive(Packet* packet) override;
+  virtual void onReceive(Packet* packet) override;
 
   // 링크를 랜덤으로 하나 선택하여 패킷을 전송한다.
   void send(Packet *packet);

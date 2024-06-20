@@ -3,9 +3,10 @@
 
 #include "link.h"
 #include "packet.h"
+#include "object.h"
 #include <vector>
 
-class Node {
+class Node : public Object {
 
 private:
   friend class LinkInstaller;

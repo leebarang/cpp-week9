@@ -12,8 +12,8 @@ class Simulator;
 
 class Schedule {
 private:
-  double time_;
-  std::function<void()> function_;
+  double time_; // 이벤트 발생 시간
+  std::function<void()> function_; // 동작
 
 public:
   double time() { return time_; }
@@ -33,8 +33,7 @@ public:
   static void prepare() { srand(RANDOM_SEED); }
 
   static void schedule(double time, std::function<void()> function) {
-    // 스케줄 큐에 스케줄을 추가한다.
-    // TODO: 구현
+    Schedule s = Schedule(time, function);
   }
 
   static void run() {
