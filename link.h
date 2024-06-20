@@ -27,7 +27,7 @@ public:
   // 해당 오브젝트의 이름을 반환한다.
   virtual std::string name() override { return "Link";}
 
-
+  double delay() const { return delay_; }
   Node *a() const { return nodeA_; }
   Node *b() const { return nodeB_; }
   void sendPacket(Node* sender, Packet* packet);

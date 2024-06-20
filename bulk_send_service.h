@@ -8,6 +8,8 @@
 #define PACKET_SIZE 512
 
 class BulkSendService : Service {
+
+  virtual ~BulkSendService() {}
   friend class BulkSendServiceInstaller;
 
 private:

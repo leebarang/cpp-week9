@@ -7,7 +7,8 @@ void Router::onReceive(Packet* packet) {
     if(r.destination == packet->destAddress()) {
       existDestination = true;
       //std::cout << "Router #" << id() << ": forwarding packet (from: " << packet->srcAddress().toString() << ", to: " << packet->destAddress().toString() << ", " << packet->dataSize() << " bytes)" << std::endl;
-      log("forwarding packet");
+      std::string message = "forwarding packet: " + packet->toString() + " to " + r.nextLink->toString();
+      log(message);
       r.nextLink->sendPacket(this, packet);
       break;
     }

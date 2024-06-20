@@ -18,6 +18,8 @@ protected:
   std::vector<Link*> myLink_;
 
 public:
+  // 해당 오브젝트의 이름을 반환한다.
+  virtual std::string name() = 0;
   Node() : id_(nextId_++) {}
   virtual ~Node() {}
   int id() const { return id_; }

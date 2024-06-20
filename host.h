@@ -23,7 +23,7 @@ private:
 public:
   Address address() { return address_; }
   Host(Address address) : address_(address) {}
-  virtual ~Host() override {delete this;}
+  virtual ~Host() override;
 
   // 해당 오브젝트의 이름을 반환한다.
   virtual std::string name() override { return "Host";}

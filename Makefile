@@ -31,7 +31,7 @@ forth.o: scenarios/forth.cpp
 	$(CC) $(CFLAGS) -c scenarios/forth.cpp
 
 simulator.o: simulator.cpp
-	$(CC) $(CFLAGS) -c simulator.cpp
+	$(CC) $(CFLAGS) -c simulator.cpp simulator.h
 
 object.o: object.cpp
 	$(CC) $(CFLAGS) -c object.cpp
