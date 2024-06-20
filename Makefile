@@ -2,23 +2,39 @@ CC = g++
 CFLAGS = -g -Wall -Werror -std=c++11
 
 # Object files
-OBJS = echo_service_installer.o service_installer.o link_installer.o manual_router.o message_service_installer.o message_service.o echo_service.o link.o host.o router.o node.o
-FIRST_OBJS = first.o $(OBJS)
-SECOND_OBJS = second.o $(OBJS)
+OBJS = simulator.o object.o echo_service_installer.o service_installer.o link_installer.o manual_router.o message_service_installer.o message_service.o echo_service.o link.o host.o router.o node.o
 
-all: first second
+all: first second third forth
 
-first: $(FIRST_OBJS)
-	$(CC) $(CFLAGS) -o first $(FIRST_OBJS)
+first: first.o $(OBJS)
+	$(CC) $(CFLAGS) -o first first.o $(OBJS)
 
-second: $(SECOND_OBJS)
-	$(CC) $(CFLAGS) -o second $(SECOND_OBJS)
+second: second.o $(OBJS)
+	$(CC) $(CFLAGS) -o second second.o $(OBJS)
+
+third: third.o $(OBJS)
+	$(CC) $(CFLAGS) -o third third.o $(OBJS)
+
+forth: forth.o $(OBJS)
+	$(CC) $(CFLAGS) -o forth forth.o $(OBJS)
 
 first.o: scenarios/first.cpp
 	$(CC) $(CFLAGS) -c scenarios/first.cpp
 
 second.o: scenarios/second.cpp
 	$(CC) $(CFLAGS) -c scenarios/second.cpp
+
+third.o: scenarios/third.cpp
+	$(CC) $(CFLAGS) -c scenarios/third.cpp
+
+forth.o: scenarios/forth.cpp
+	$(CC) $(CFLAGS) -c scenarios/forth.cpp
+
+simulator.o: simulator.cpp
+	$(CC) $(CFLAGS) -c simulator.cpp
+
+object.o: object.cpp
+	$(CC) $(CFLAGS) -c object.cpp
 
 service_installer.o: service_installer.cpp service_installer.h
 	$(CC) $(CFLAGS) -c service_installer.cpp
@@ -54,4 +70,4 @@ node.o: node.cpp node.h
 	$(CC) $(CFLAGS) -c node.cpp
 
 clean:
-	rm -f *.o first second
+	rm -f *.o *.exe first second third forth
